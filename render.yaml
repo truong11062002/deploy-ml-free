@@ -1,0 +1,17 @@
+# Exported from Render on 2024-04-14T12:04:45Z
+services:
+- type: web
+  name: deploy-ml-free
+  runtime: python
+  repo: https://github.com/truong11062002/deploy-ml-free
+  plan: free
+  env: 
+      - type: python
+        PYTHON_VERSION: 3.7.10
+  envVars:
+  - key: PYTHON_VERSION
+    sync: false
+  region: singapore
+  buildCommand: pip install -r requirements.txt
+  startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+version: "1"
